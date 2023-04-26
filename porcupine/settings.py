@@ -487,8 +487,8 @@ def _init_global_gui_settings() -> None:
     )
     update_fixedfont(None)
 
-
-def _create_dialog_content() -> ttk.Frame:
+    global_settings.add_option("allow_quit_with_open_tabs", default=False)
+def _create_dialog_content() -> tuple[ttk.Frame, ttk.Frame]:
     dialog = tkinter.Toplevel()
     dialog.withdraw()
     dialog.title("Porcupine Settings")
@@ -504,7 +504,9 @@ def _create_dialog_content() -> ttk.Frame:
     big_frame = ttk.Frame(dialog)
     big_frame.pack(fill="both", expand=True)
     content = ttk.Frame(big_frame)
-    content.pack(fill="both", expand=True, padx=5, pady=5)
+    content.pack(fill="x", padx=5, pady=5)
+    checkbox_frame = ttk.Frame(big_frame)
+    checkbox_frame.pack(fill="both", expand=True, padx=5, pady=5)
     ttk.Separator(big_frame).pack(fill="x")
     buttonframe = ttk.Frame(big_frame, padding=5)
     buttonframe.pack(fill="x")
@@ -516,11 +518,11 @@ def _create_dialog_content() -> ttk.Frame:
 
     content.grid_columnconfigure(0, weight=1)
     content.grid_columnconfigure(1, weight=1)
-    return content
+    return content, checkbox_frame
 
 
 _dialog_content: ttk.Frame | None = None
-
+_checkbox_frame: ttk.Frame | None = None
 
 def show_dialog() -> None:
     """Show the "Porcupine Settings" dialog.
@@ -963,6 +965,7 @@ def _fill_dialog_content_with_defaults() -> None:
         "default_line_ending", "Default line ending:", values=[ending.name for ending in LineEnding]
     )
     add_pygments_style_button("pygments_style", "Pygments style for editing:")
+    add_checkbutton("allow_quit_with_open_tabs", text="Allow cntr-q quitting")
 
 
 # undocumented on purpose, don't use in plugins
@@ -972,6 +975,6 @@ def init_the_rest_after_initing_enough_for_using_disabled_plugins_list() -> None
 
     _log.debug("initializing continues")
     _init_global_gui_settings()
-    _dialog_content = _create_dialog_content()
+    _dialog_content, _checkbox_frame = _create_dialog_content()
     _fill_dialog_content_with_defaults()
     _log.debug("initialized")
