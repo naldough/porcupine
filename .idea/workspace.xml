@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80038b91-867e-4f21-b985-4d554c1fae95" name="Changes" comment="ctrl-q option now functions on setting toggle">
+    <list default="true" id="80038b91-867e-4f21-b985-4d554c1fae95" name="Changes" comment="PF-7: added update notification to window title/removed window title from windowicon.py">
+      <change afterPath="$PROJECT_DIR$/tests/test_check_update.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/porcupine/plugins/windowicon.py" beforeDir="false" afterPath="$PROJECT_DIR$/porcupine/plugins/windowicon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/porcupine/plugins/check_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/porcupine/plugins/check_update.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "editorconfig.notification": "100  ",
-    "last_opened_file_path": "/home/bridgew/PycharmProjects/bSantosCubesProject",
+    "last_opened_file_path": "/home/bridgew/PycharmProjects/homework1Comp490BSantos",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -58,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681680334905</updated>
-      <workItem from="1682867567599" duration="2992000" />
+      <workItem from="1682867567599" duration="8507000" />
     </task>
     <task id="LOCAL-00001" summary="Moved ctrl-q setting to its own plugin file">
       <created>1682860051244</created>
@@ -74,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682865284693</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="PF-7: added update notification to window title/removed window title from windowicon.py">
+      <created>1682870893238</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682870893238</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +101,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Moved ctrl-q setting to its own plugin file" />
     <MESSAGE value="ctrl-q option now functions on setting toggle" />
-    <option name="LAST_COMMIT_MESSAGE" value="ctrl-q option now functions on setting toggle" />
+    <MESSAGE value="PF-7: added update notification to window title/removed window title from windowicon.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="PF-7: added update notification to window title/removed window title from windowicon.py" />
   </component>
 </project>
