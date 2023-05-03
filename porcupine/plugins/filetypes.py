@@ -282,6 +282,14 @@ def setup() -> None:
     global_settings.add_option("default_filetype", "Python")
 
     # load_filetypes() got already called in setup_argument_parser()
+
+    # create the variable first
+    global filetypes_var
+    filetypes_var = tkinter.StringVar()
+
+    for name in sorted(filetypes.keys(), key=str.casefold):
+        _add_filetype_menuitem(name, filetypes_var)
+
     get_tab_manager().add_filetab_callback(on_new_filetab)
 
     settings.add_combobox(
@@ -290,10 +298,6 @@ def setup() -> None:
         values=sorted(filetypes.keys(), key=str.casefold),
     )
     set_filedialog_kwargs()
-    global filetypes_var
-    filetypes_var = tkinter.StringVar()
-    for name in sorted(filetypes.keys(), key=str.casefold):
-        _add_filetype_menuitem(name, filetypes_var)
 
     get_tab_manager().bind("<<NotebookTabChanged>>", _sync_filetypes_menu, add=True)
     path = dirs.user_config_path / "filetypes.toml"
