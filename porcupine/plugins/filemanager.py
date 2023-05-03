@@ -434,7 +434,6 @@ def populate_menu(event: tkinter.Event[DirectoryTree]) -> None:
 def setup() -> None:
     tree = get_directory_tree()
     tree.bind("<<PopulateContextMenu>>", populate_menu, add=True)
-    tree.bind("<Control-c>", lambda event: copy_folder(get_selected_path(tree)))
 
     for command in commands:
         if command.virtual_event_name is not None:
