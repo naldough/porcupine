@@ -384,6 +384,19 @@ def new_directory_here(path: Path) -> None:
         get_tab_manager().event_generate("<<FileSystemChanged>>")
 
 
+# takes path object and copies it into a new path
+def copy_folder(path: Path) -> None:
+    new_path = ask_file_name(path.parent, f"{path.name}_copy", mode=FilenameMode.NEW_DIRECTORY)
+    if not new_path:
+        raise ValueError("Invalid destination directory")
+    shutil.copytree(path, new_path)
+
+
+# takes the path object  and returns a boolean value determining if the path is a directory
+def can_copy_folder(path: Path) -> bool:
+    return path.is_dir()
+
+
 commands = [
     # Doing something to an entire project is more difficult than you would think.
     # For example, if the project is renamed, venv locations don't update.
@@ -397,6 +410,7 @@ commands = [
     Command("Paste", "<<Paste>>", can_paste, paste),
     Command("Rename", "<<FileManager:Rename>>", is_NOT_project_root, rename),
     Command(f"Move to {trash_name}", "<<FileManager:Trash>>", is_NOT_project_root, trash),
+    Command("Copy folder", "<<FileManager:Copy folder>>", can_copy_folder, copy_folder),
     Command("Delete", "<<FileManager:Delete>>", is_NOT_project_root, delete),
     Command("Open in file manager", None, (lambda p: p.is_dir()), open_in_file_manager),
     Command("Open in terminal", None, (lambda p: p.is_dir()), open_in_terminal),
@@ -418,7 +432,6 @@ def populate_menu(event: tkinter.Event[DirectoryTree]) -> None:
 def setup() -> None:
     tree = get_directory_tree()
     tree.bind("<<PopulateContextMenu>>", populate_menu, add=True)
-
     for command in commands:
         if command.virtual_event_name is not None:
             tree.bind(command.virtual_event_name, command.run, add=True)
