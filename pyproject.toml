@@ -39,6 +39,8 @@ dependencies = [
     "psutil>=5.8.0,<6.0.0",
     "PyYAML==6.0",
     "tree-sitter-builds==2023.3.12",
+    "requests==2.28.2",
+    "urllib3<=1.27",
 ]
 
 [project.scripts]
