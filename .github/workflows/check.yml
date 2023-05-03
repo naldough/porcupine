@@ -17,7 +17,7 @@ jobs:
     - run: pip install wheel
     - run: pip install -r requirements.txt -r requirements-dev.txt
     - run: |
-        mypy --install-types
+        mypy --install-types porcupine/plugins/check_update.py
         time mypy --platform linux --python-version 3.7 porcupine more_plugins docs/extensions.py
         time mypy --platform linux --python-version 3.8 porcupine more_plugins docs/extensions.py
         time mypy --platform linux --python-version 3.9 porcupine more_plugins docs/extensions.py
