@@ -380,3 +380,6 @@ def run_command(command: str, cwd: Path) -> None:
     assert runner is not None
     get_vertical_panedwindow().paneconfigure(runner.textwidget, hide=False)
     runner.run_command(cwd, command)
+    print("text", runner.textwidget.winfo_height())
+    if runner.textwidget.winfo_height() <= 10:
+        get_vertical_panedwindow().paneconfigure(runner.textwidget, height=100)
