@@ -3,12 +3,12 @@ from porcupine import __version__ as local_version
 from porcupine import get_main_window
 
 
-def get_remote_vers() -> None:
+def get_remote_vers() -> str:
     remote = requests.get('https://api.github.com/repos/Akuli/porcupine/releases/latest',
                                   headers={'Accept': 'application/vnd.github+json'}).json()['tag_name']
     return remote.strip('v')
 
-def get_local_vers() -> None:
+def get_local_vers() -> str:
     local = local_version
     return local
 
